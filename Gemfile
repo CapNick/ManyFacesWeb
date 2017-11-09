@@ -20,6 +20,8 @@ gem 'kaminari'
 group :production do
   # mysql for production
   gem 'mysql2'
+  # sqlite for heroku
+  gem 'sqlite3'
 end
 group :development do
   # Use sqlite3 as the database for Active Record
