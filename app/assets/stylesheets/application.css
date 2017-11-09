@@ -15,13 +15,18 @@
  */
 
 body {
-    font-family: "FreeSans", sans-serif;
+    font-family: "FreeSans", "Arial", sans-serif;
 }
 
-p {
+th {
+    text-align: left;
+}
+
+p, li, td, th {
     font-size: 80%;
 }
 
-li {
-    font-size: 80%;
+td, th {
+    padding-bottom: 5px;
+    padding-right: 5px;
 }

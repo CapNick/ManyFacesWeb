@@ -2,3 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  font-family: "FreeSans", "Arial", sans-serif;
+}
+
+th {
+  text-align: left;
+}
+
+p, li, td, th {
+  font-size: 80%;
+}
+
+td, th {
+  padding-bottom: 5px;
+  padding-right: 5px;
+}

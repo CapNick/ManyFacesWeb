@@ -1,0 +1,18 @@
+<% title "Update" %>
+
+<h2>Update staff member</h2>
+
+<% if @face.errors.any? %>
+    <h4>The following errors prevented the staff member from being updated:</h4>
+    <ul>
+      <% @face.errors.full_messages.each do |err| %>
+          <li><%= err %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<%= render 'form' %>
+
+<p>
+  <%= link_to "Back to all staff members", faces_path %>
+</p>

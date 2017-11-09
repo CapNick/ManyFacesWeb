@@ -1,0 +1,31 @@
+<% title "All" %>
+
+<h2>View all staff members</h2>
+
+<p>
+<%= link_to "Add a new staff member", new_face_path %>
+</p>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Room</th>
+    <th>Modules</th>
+    <th>Email</th>
+    <th>Photo</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+  <% @faces.each do |f| %>
+    <tr>
+      <td><%= f.name %></td>
+      <td><%= f.room %></td>
+      <td><%= f.modules %></td>
+      <td><%= f.email %></td>
+      <td><a href=<%= f.photo %>><%= f.photo %></a></td>
+      <td><%= link_to "Edit", edit_face_path(f) %></td>
+      <td><%= link_to "View", face_path(f) %></td>
+      <td><%= link_to "Delete", face_path(f), method: :delete, data: {confirm: "Are you sure you want to delete this staff member?"} %></td>
+    </tr>
+  <% end %>
+</table>
