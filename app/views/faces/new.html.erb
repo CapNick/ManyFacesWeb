@@ -1,0 +1,38 @@
+<% title "New" %>
+
+<h2>Add a new staff member</h2>
+
+<% if @face.errors.any? %>
+  <h4>The following errors prevented the staff member from being created:</h4>
+  <ul>
+    <% @face.errors.full_messages.each do |err| %>
+    <li><%= err %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @face do |f| %>
+  <p>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :room %><br/>
+    <%= f.text_field :room %>
+  </p>
+  <p>
+    <%= f.label :modules %><br/>
+    <%= f.text_field :modules %>
+  </p>
+  <p>
+    <%= f.label :email %><br/>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :link_to_photo %><br/>
+    <%= f.text_field :photo %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

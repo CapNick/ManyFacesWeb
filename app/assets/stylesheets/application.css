@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+    font-family: "FreeSans", sans-serif;
+}
+
+p {
+    font-size: 80%;
+}
+
+li {
+    font-size: 80%;
+}

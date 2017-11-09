@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'about', to: 'welcome#about'
 
+  # provides a number of paths
+  resources :faces
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
