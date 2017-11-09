@@ -18,6 +18,10 @@ body {
     font-family: "FreeSans", "Arial", sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 th {
     text-align: left;
 }

@@ -19,9 +19,8 @@ gem 'kaminari'
 
 group :production do
   # mysql for production
-  # gem 'mysql2'
-  gem 'rails_12factor'
-  gem 'pg'
+  gem 'mysql2'
+  # gem 'pg'
 end
 
 group :development do
