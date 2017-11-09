@@ -1,25 +1,25 @@
 <%= form_for @face do |f| %>
     <p>
       <%= f.label :name %><br/>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, :class => "text_field" %>
     </p>
     <p>
       <%= f.label :room %><br/>
-      <%= f.text_field :room %>
+      <%= f.text_field :room, :class => "text_field" %>
     </p>
     <p>
       <%= f.label :modules %><br/>
-      <%= f.text_field :modules %>
+      <%= f.text_field :modules, :class => "text_field" %>
     </p>
     <p>
       <%= f.label :email %><br/>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, :class => "text_field" %>
     </p>
     <p>
       <%= f.label :link_to_photo %><br/>
-      <%= f.text_field :photo %>
+      <%= f.text_field :photo, :class => "text_field" %>
     </p>
     <p>
-      <%= f.submit %>
+      <%= f.submit "Save", :class => "button" %>
     </p>
 <% end %>

@@ -1,0 +1,37 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  margin-left: 10px;
+  font-family: "FreeSans", "Arial", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.button, .text_field {
+  font-family: "FreeSans", "Arial", sans-serif;
+  font-size: 95%;
+}
+
+th {
+  text-align: left;
+}
+
+table {
+  border-spacing: 0px;
+}
+
+th, td {
+  border-bottom: 1px solid black;
+}
+
+p, li, td, th {
+  font-size: 90%;
+}
+
+td, th {
+  padding: 5px;
+}

@@ -262,7 +262,7 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
-  bootstrap-sass
+  bootstrap-sass (~> 3.3.7)
   byebug
   capybara
   coffee-rails (~> 4.2)

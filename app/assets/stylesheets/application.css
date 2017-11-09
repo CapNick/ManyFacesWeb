@@ -13,24 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-body {
-    font-family: "FreeSans", "Arial", sans-serif;
-}
-
-a {
-    text-decoration: none;
-}
-
-th {
-    text-align: left;
-}
-
-p, li, td, th {
-    font-size: 80%;
-}
-
-td, th {
-    padding-bottom: 5px;
-    padding-right: 5px;
-}
