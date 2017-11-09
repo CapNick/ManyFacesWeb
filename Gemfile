@@ -20,12 +20,10 @@ gem 'kaminari'
 group :production do
   # mysql for production
   gem 'mysql2'
-  # sqlite for heroku
-  gem 'sqlite3'
+  gem 'pg'
 end
+
 group :development do
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
   gem 'better_errors'
   gem 'rails_layout'
   gem 'spring-commands-rspec'
@@ -35,6 +33,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 group :development, :test do
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
   gem 'byebug', platform: :mri
   gem 'factory_bot'
   gem 'faker'
