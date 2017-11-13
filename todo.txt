@@ -1,0 +1,8 @@
+Minutes:
+
+- Position/job title
+- Telephone number
+- Admin/technical/academic
+- Two edit columns, override (or add in missing data) and synced (could override room, name)
+- Default values?
+- Help information/contact information?
