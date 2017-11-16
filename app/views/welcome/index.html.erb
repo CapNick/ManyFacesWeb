@@ -1,7 +1,7 @@
 <% title "Home" %>
 
-<h1>Welcome to the ManyFaces application!</h1>
-<p>
-  <%= link_to 'Go to staff members', faces_path %> |
-  <%= link_to 'About ManyFaces', about_path %>
-</p>
+<h1>Welcome to the ManyFaces application</h1>
+<div class="field">
+  <%= button_to 'Get started', faces_path, method: :get %>
+</div>
+<%= link_to 'About ManyFaces', about_path %>

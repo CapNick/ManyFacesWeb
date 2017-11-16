@@ -4,6 +4,9 @@
 
 body {
   margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 12.5px;
   font-family: "FreeSans", "Arial", sans-serif;
 }
 
@@ -11,27 +14,32 @@ a {
   text-decoration: none;
 }
 
-.button, .text_field {
-  font-family: "FreeSans", "Arial", sans-serif;
-  font-size: 95%;
-}
-
 th {
   text-align: left;
+}
+
+.field, .actions {
+  margin-bottom: 5px;
 }
 
 table {
   border-spacing: 0px;
 }
 
+#flash {
+  margin-top: 5px;
+}
+
 th, td {
   border-bottom: 1px solid black;
-}
-
-p, li, td, th {
-  font-size: 90%;
-}
-
-td, th {
   padding: 5px;
+}
+
+#addnew {
+  float: left;
+  margin-right: 5px;
+}
+
+#logout {
+  float:right;
 }
