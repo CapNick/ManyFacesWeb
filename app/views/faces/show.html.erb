@@ -27,7 +27,5 @@
   <b>Link to photo:</b> <%= @face.photo %>
 </p>
 
-<p>
-  <%= link_to "Update this staff member", edit_face_path(@face) %> |
-  <%= link_to "Back to all staff members", faces_path %>
-</p>
+<%= button_to "Update this staff member", edit_face_path(@face), class: "field", method: :get %>
+<%= link_to "Back to all staff members", faces_path %>

@@ -80,13 +80,13 @@ class FacesController < ApplicationController
         unless row.css('a')[0].nil?
           unless row.css('td')[0].css('a')[0]['href'].include? 'mailto:'
             names = row.css('td')[0].css('a')[0].text.to_s.split(', ')
-            first_name = names[1]
-            last_name = names[0]
+            first_name = names[1].delete(' ');
+            last_name = names[0].delete(' ');
             name = first_name + ' ' + last_name
             contact = row.css('td')[1].text
             title = row.css('td')[2].text
             email = row.css('a')[0]['href'] + '@nottingham.ac.uk'
-            image_url = uri + 'staff-images/' + last_name.downcase + first_name.downcase + '.jpg'
+            image_url = uri + 'staff-images/' + first_name.downcase + last_name.downcase + '.jpg'
             Face.create(:name => name, :room => "null", :modules => "null", :email => email, :photo => image_url, :phone => contact, :position => title, :_type => type)
           end
         end
