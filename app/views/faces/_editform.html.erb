@@ -1,0 +1,85 @@
+<%= form_for @face do |f| %>
+    <p>
+      <div style="float: left; margin-right: 30px">
+        <%= f.label :name %><br/>
+        <%= f.text_field :name, :class => "text_field", :readonly => true %>
+      </div>
+      <div>
+        <%= f.label(:aapl, "Name (Override)") %><br/>
+        <%= f.text_field :ovr_name, :class => "text_field" %>
+      </div>
+    </p>
+    <p>
+    <div style="float: left; margin-right: 30px">
+      <%= f.label :type %><br/>
+      <%= f.text_field :_type, :class => "text_field", :readonly => true %>
+    </div>
+    <div>
+      <%= f.label(:aapl, "Type (Override)") %><br/>
+      <%= f.text_field :ovr_type, :class => "text_field" %>
+    </div>
+    </p>
+    <p>
+    <div style="float: left; margin-right: 30px">
+      <%= f.label :position %><br/>
+      <%= f.text_field :position, :class => "text_field", :readonly => true %>
+    </div>
+    <div>
+      <%= f.label(:aapl, "Position (Override)") %><br/>
+      <%= f.text_field :ovr_position, :class => "text_field" %>
+    </div>
+    </p>
+    <p>
+    <div style="float: left; margin-right: 30px">
+      <%= f.label :modules %><br/>
+      <%= f.text_field :modules, :class => "text_field", :readonly => true %>
+    </div>
+    <div>
+      <%= f.label(:aapl, "Modules (Override)") %><br/>
+      <%= f.text_field :ovr_modules, :class => "text_field" %>
+    </div>
+    </p>
+    <p>
+    <div style="float: left; margin-right: 30px">
+      <%= f.label :room %><br/>
+      <%= f.text_field :room, :class => "text_field", :readonly => true %>
+    </div>
+    <div>
+      <%= f.label(:aapl, "Room (Override)") %><br/>
+      <%= f.text_field :ovr_room, :class => "text_field" %>
+    </div>
+    </p>
+    <p>
+    <div style="float: left; margin-right: 30px">
+      <%= f.label :email %><br/>
+      <%= f.text_field :email, :class => "text_field", :readonly => true %>
+    </div>
+    <div>
+      <%= f.label(:aapl, "Email (Override)") %><br/>
+      <%= f.text_field :ovr_email, :class => "text_field" %>
+    </div>
+    </p>
+    <p>
+    <div style="float: left; margin-right: 30px">
+      <%= f.label :phone %><br/>
+      <%= f.text_field :phone, :class => "text_field", :readonly => true %>
+    </div>
+    <div>
+      <%= f.label(:aapl, "Phone (Override)") %><br/>
+      <%= f.text_field :ovr_phone, :class => "text_field" %>
+    </div>
+    </p>
+    <p>
+    <div style="float: left; margin-right: 30px">
+      <%= f.label 'Link to photo' %><br/>
+      <%= f.text_field :photo, :class => "text_field", :readonly => true %>
+    </div>
+    <div>
+      <%= f.label(:aapl, "Photo (Override)") %><br/>
+      <%= f.text_field :ovr_photo, :class => "text_field" %>
+    </div>
+    </p>
+    <p>
+      <%= f.submit "Save", :class => "button" %>
+    </p>
+<% end %>
