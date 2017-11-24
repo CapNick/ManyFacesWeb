@@ -12,7 +12,8 @@ class FacesController < ApplicationController
   before_action :get_face, only: [:edit, :update, :show, :destroy]
 
   def index
-    @faces = Face.all
+    # @faces = Face.all
+    @faces = Face.order('name').page(params[:page]).per(9)
   end
 
   def new
@@ -25,7 +26,7 @@ class FacesController < ApplicationController
   def update
     if @face.update(face_params)
       flash[:notice] = "Staff member was successfully updated."
-      redirect_to face_path(@face)
+      redirect_to faces_path
     else
       # reload the /faces/edit page
       render 'edit'
@@ -68,7 +69,7 @@ class FacesController < ApplicationController
     end
 
     def face_params
-      params.require(:face).permit(:name, :_type, :position, :modules, :room, :email, :phone, :photo, :ovr_name, :ovr_type, :ovr_position, :ovr_modules, :ovr_room, :ovr_email, :ovr_phone, :ovr_photo)
+      params.require(:face).permit(:name, :_type, :position, :modules, :room, :email, :phone, :photo, :visible, :ovr_name, :ovr_type, :ovr_position, :ovr_modules, :ovr_room, :ovr_email, :ovr_phone, :ovr_photo)
     end
 
   def scrape_page(type)
@@ -86,7 +87,7 @@ class FacesController < ApplicationController
           last_name = names[0].delete(' ')
           webpage = uri + row.css('td')[0].css('a')[0]['href']
           name = first_name + ' ' + last_name
-          contact = row.css('td')[1].text
+          contact = row.css('td')[1].text.to_s.gsub(/\s+/, "")
           title = row.css('td')[2].text
           email = row.css('a')[0]['href'] + '@nottingham.ac.uk'
           image_url = uri + 'staff-images/' + first_name.downcase + last_name.downcase + '.jpg'

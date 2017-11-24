@@ -18,6 +18,7 @@ gem 'devise'
 gem 'high_voltage'
 gem 'haml-rails'
 gem 'kaminari'
+gem 'kaminari-bootstrap'
 
 group :production do
   # mysql for production

@@ -6,12 +6,12 @@
 
 <h1>Staff members</h1>
 
-<p>
   <div id="addnew">
-    <%= button_to "Add new staff member", new_face_path, :class => "button", :method => :get %>
+    <%= button_to "Add new staff member", new_face_path, :class => "btn btn-danger", :method => :get %>
   </div>
-  <%= button_to "Sync", faces_scrape_path, :class => "button", :method => :post %>
-</p>
+  <%= button_to "Sync <span class = 'glyphicon glyphicon-refresh'> </span>", faces_scrape_path, :class => "btn btn-primary", :method => :post %>
+
+<%= paginate(@faces) %>
 
 <table>
   <tr>
@@ -26,67 +26,67 @@
     <th colspan="3">Actions</th>
   </tr>
 
-  <% @faces.each do |f| %>
-    <tr>
+  <% @faces.each do |face| %>
+      <tr class="<%= face.visible ? 'default' : 'coloured' %>">
       <td>
-        <% if f.ovr_name.to_s.empty? %>
-          <%= f.name %>
+        <% if face.ovr_name.to_s.empty? %>
+          <%= face.name %>
         <% else %>
-          <%= f.ovr_name %>
+          <%= face.ovr_name %>
         <% end %>
       </td>
       <td>
-        <% if f.ovr_type.to_s.empty? %>
-            <%= f._type %>
+        <% if face.ovr_type.to_s.empty? %>
+            <%= face._type %>
         <% else %>
-            <%= f.ovr_type %>
+            <%= face.ovr_type %>
         <% end %>
       </td>
       <td>
-        <% if f.ovr_position.to_s.empty? %>
-            <%= f.position %>
+        <% if face.ovr_position.to_s.empty? %>
+            <%= face.position %>
         <% else %>
-            <%= f.ovr_position %>
+            <%= face.ovr_position %>
         <% end %>
       </td>
       <td>
-        <% if f.ovr_modules.to_s.empty? %>
-            <%= f.modules %>
+        <% if face.ovr_modules.to_s.empty? %>
+            <%= face.modules %>
         <% else %>
-            <%= f.ovr_modules %>
+            <%= face.ovr_modules %>
         <% end %>
       </td>
       <td>
-        <% if f.ovr_room.to_s.empty? %>
-            <%= f.room %>
+        <% if face.ovr_room.to_s.empty? %>
+            <%= face.room %>
         <% else %>
-            <%= f.ovr_room %>
+            <%= face.ovr_room %>
         <% end %>
       </td>
       <td>
-        <% if f.ovr_email.to_s.empty? %>
-            <%= f.email %>
+        <% if face.ovr_email.to_s.empty? %>
+            <%= face.email %>
         <% else %>
-            <%= f.ovr_email %>
+            <%= face.ovr_email %>
         <% end %>
       </td>
       <td>
-        <% if f.ovr_phone.to_s.empty? %>
-            <%= f.phone %>
+        <% if face.ovr_phone.to_s.empty? %>
+            <%= face.phone %>
         <% else %>
-            <%= f.ovr_phone %>
+            <%= face.ovr_phone %>
         <% end %>
       </td>
       <td>
-        <% if f.ovr_photo.to_s.empty? %>
-            <a href=<%= f.photo %>><%= f.photo %></a>
+        <% if face.ovr_photo.to_s.empty? %>
+            <a href=<%= face.photo %>><%= face.photo %></a>
         <% else %>
-            <a href=<%= f.ovr_photo %>><%= f.ovr_photo %></a>
+            <a href=<%= face.ovr_photo %>><%= face.ovr_photo %></a>
         <% end %>
       </td>
-      <td><%= link_to "Edit", edit_face_path(f) %></td>
-      <td><%= link_to "View", face_path(f) %></td>
-      <td><%= link_to "Delete", face_path(f), method: :delete, data: {confirm: "Are you sure you want to delete this staff member?"} %></td>
+      <td><%= link_to "Edit", edit_face_path(face) %></td>
+      <td><%= link_to "View", face_path(face) %></td>
+      <td><%= link_to "Delete", face_path(face), method: :delete, data: {confirm: "Are you sure you want to delete this staff member?"} %></td>
     </tr>
   <% end %>
 </table>

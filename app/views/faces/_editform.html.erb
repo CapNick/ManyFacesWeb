@@ -4,9 +4,13 @@
         <%= f.label :name %><br/>
         <%= f.text_field :name, :class => "text_field", :readonly => true %>
       </div>
-      <div>
+      <div style="float: left; margin-right: 30px">
         <%= f.label(:aapl, "Name (Override)") %><br/>
         <%= f.text_field :ovr_name, :class => "text_field" %>
+      </div>
+      <div>
+        <%= f.label 'Visible?' %><br/>
+        <%= f.check_box :visible %>
       </div>
     </p>
     <p>

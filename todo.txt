@@ -1,12 +1,8 @@
 Minutes:
 
-- Two edit columns, override (or add in missing data) and synced (could override room, name)
-- Default values?
 - Help information/contact information?
-- 'Sync' should offer/highlight possible updates
-- Override values should be stored in a separate table
-- 'Data being used' table, as well as a 'last pulled' table
-- Only get Face models where 'visible' is true - some can be false (checkbox or something)
+- Improve look/feel of 'visible' checkbox
+- Highlight overridden values in table
 
 For next week:
 - Have the web application output JSON for Nick
