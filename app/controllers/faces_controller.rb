@@ -14,6 +14,7 @@ class FacesController < ApplicationController
   def index
     # @faces = Face.all
     @faces = Face.order('name').page(params[:page]).per(9)
+    @faces_all = Face.all.where(visible: true)
   end
 
   def new
