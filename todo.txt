@@ -1,9 +1,10 @@
 Minutes:
 
-- Help information/contact information?
-- Improve look/feel of 'visible' checkbox
-- Highlight overridden values in table
+- Help/contact information?
+- Improve look/feel of 'visible' checkbox - add to table?
+- Add more Bootstrap to warning/success messages at the top of the screen.
+- Improve behaviour of "sync" - should not delete everything and then add again, because override values would be lost.
+-
 
 For next week:
-- Have the web application output JSON for Nick
-- As above
+-

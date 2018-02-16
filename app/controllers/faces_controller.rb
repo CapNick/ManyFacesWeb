@@ -73,28 +73,42 @@ class FacesController < ApplicationController
     end
 
   def scrape_page(type)
-    field = type.to_s.downcase
-    uri = 'https://www.nottingham.ac.uk/computerscience/people/'
-    page = Nokogiri::HTML(HTTParty.get(uri))
-    page.at_css("div#lookup-#{field}").css('tr').map do |row|
-      if row.css('th').text.to_s.include?('Academic Staff in Malaysia')
+    field = type.to_s.downcase # academic, administrative or technical
+    uri = 'https://www.nottingham.ac.uk/computerscience/people/' # the URL to scrape from
+    page = Nokogiri::HTML(HTTParty.get(uri)) # the page source
+    page.at_css("div#lookup-#{field}").css('tr').map do |row| # for each row in the details table
+      if row.css('th').text.to_s.include?('Academic Staff in Malaysia') # do not scrape international staff details
         break
       end
       unless row.css('a')[0].nil?
         unless row.css('td')[0].css('a')[0]['href'].include? 'mailto:'
-          names = row.css('td')[0].css('a')[0].text.to_s.split(', ')
+          names = row.css('td')[0].css('a')[0].text.to_s.split(', ') # extract name
           first_name = names[1].delete(' ')
           last_name = names[0].delete(' ')
-          webpage = uri + row.css('td')[0].css('a')[0]['href']
+          webpage = uri + row.css('td')[0].css('a')[0]['href'] # extract academic webpage
           name = first_name + ' ' + last_name
-          contact = row.css('td')[1].text.to_s.gsub(/\s+/, "")
-          title = row.css('td')[2].text
-          email = row.css('a')[0]['href'] + '@nottingham.ac.uk'
-          image_url = uri + 'staff-images/' + first_name.downcase + last_name.downcase + '.jpg'
+          contact = row.css('td')[1].text.to_s.gsub(/\s+/, "") # extract contact number
+          title = row.css('td')[2].text # extract role in school
+          email = row.css('a')[0]['href'] + '@nottingham.ac.uk' # extract email address
+          image_url = uri + 'staff-images/' + first_name.downcase + last_name.downcase + '.jpg' # extract portrait photo
           Face.create(:name => name, :room => "None", :modules => "None", :email => email, :photo => image_url, :phone => contact, :position => title, :_type => type, :url => webpage)
         end
       end
     end
+  end
+
+  def scrape_room(webpage)
+    page = Nokogiri::HTML(HTTParty.get(webpage)) # the page source
+    address_line = page.at_css("div#lookup-personal-details").css('span.street-address').first.to_s # extract the first line of staff member's address
+    temp = address_line.split(">")[1].to_s # remove HTML tags
+    temp = temp.split("<")[0]
+    if temp.to_s.include? '&amp;'
+      temp.to_s.sub! '&amp;', '&' # fix encoding issues
+    end
+    if temp.to_s.length == 0
+      temp = "None" # not all staff members have rooms
+    end
+    temp.to_s
   end
 
   def update_rooms
@@ -102,19 +116,5 @@ class FacesController < ApplicationController
       f.room = scrape_room f.url
       f.save
     end
-  end
-
-  def scrape_room(webpage)
-    page = Nokogiri::HTML(HTTParty.get(webpage))
-    address_line = page.at_css("div#lookup-personal-details").css('span.street-address').first.to_s
-    temp = address_line.split(">")[1].to_s
-    temp = temp.split("<")[0]
-    if temp.to_s.include? '&amp;'
-      temp.to_s.sub! '&amp;', '&'
-    end
-    if temp.to_s.length == 0
-      temp = "None"
-    end
-    temp.to_s
   end
 end

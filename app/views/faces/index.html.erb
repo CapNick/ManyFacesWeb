@@ -1,15 +1,19 @@
 <% title "View All" %>
 
 <div id="logout">
-  <%= button_to "Log out", destroy_user_session_path, :class => "button", :method => :delete %>
+  <%= button_to "Log out", destroy_user_session_path, :class => "btn btn-default", :method => :delete %>
 </div>
 
 <h1>Staff members</h1>
 
   <div id="addnew">
-    <%= button_to "Add new staff member", new_face_path, :class => "btn btn-danger", :method => :get %>
+    <%= button_to new_face_path, :class => "btn btn-success", :method => :get do %>
+        <span class="glyphicon glyphicon-plus"></span>&nbsp; New staff member
+    <% end %>
   </div>
-  <%= button_to "Sync <span class = 'glyphicon glyphicon-refresh'> </span>", faces_scrape_path, :class => "btn btn-primary", :method => :post %>
+  <%= button_to faces_scrape_path, :class => "btn btn-default", :method => :post do %>
+        <span class="glyphicon glyphicon-refresh"></span>&nbsp; Sync
+  <% end %>
 
 <%= paginate(@faces) %>
 
@@ -23,7 +27,7 @@
     <th>Email</th>
     <th>Phone</th>
     <th>Photo</th>
-    <th colspan="3">Actions</th>
+    <th colspan="2">Actions</th>
   </tr>
 
   <% @faces.each do |face| %>
@@ -84,9 +88,14 @@
             <a href=<%= face.ovr_photo %>><%= face.ovr_photo %></a>
         <% end %>
       </td>
-      <td><%= link_to "Edit", edit_face_path(face) %></td>
-      <td><%= link_to "View", face_path(face) %></td>
-      <td><%= link_to "Delete", face_path(face), method: :delete, data: {confirm: "Are you sure you want to delete this staff member?"} %></td>
+      <td><%= button_to edit_face_path(face), :class => "btn btn-warning", :method => :get do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>
+      </td>
+      <td><%= button_to face_path(face), method: :delete, data: {confirm: "Are you sure you want to delete this staff member?"}, :class => "btn btn-danger" do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+      </td>
     </tr>
   <% end %>
 </table>

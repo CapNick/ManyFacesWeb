@@ -1,5 +1,9 @@
 <% title "View" %>
 
+<%= button_to faces_path, :class => "btn btn-default", :id => "back", :method => :get do %>
+    <span class="glyphicon glyphicon-chevron-left"></span>&nbsp; Back
+<% end %>
+
 <h1>View staff member</h1>
 
 <p>
@@ -67,5 +71,4 @@
   <% end %>
 </p>
 
-<%= button_to "Update this staff member", edit_face_path(@face), class: "field", method: :get %>
-<%= link_to "Back to all staff members", faces_path %>
+<%= button_to "Update this staff member", edit_face_path(@face), class: "btn btn-warning", method: :get %>
