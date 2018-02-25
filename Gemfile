@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '5.0.1'
 
 gem 'httparty'
+gem 'spawnling', '~>2.1'
 gem 'puma', '~> 3.0'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'sass-rails', '~> 5.0'
@@ -17,6 +18,7 @@ gem 'devise'
 gem 'high_voltage'
 gem 'haml-rails'
 gem 'kaminari'
+gem 'kaminari-bootstrap'
 
 group :production do
   # mysql for production

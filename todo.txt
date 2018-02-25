@@ -1,13 +1,12 @@
-Minutes:
+To-do:
 
-- Two edit columns, override (or add in missing data) and synced (could override room, name)
-- Default values?
-- Help information/contact information?
-- 'Sync' should offer/highlight possible updates
-- Override values should be stored in a separate table
-- 'Data being used' table, as well as a 'last pulled' table
-- Only get Face models where 'visible' is true - some can be false (checkbox or something)
+- Help/contact information?
+- Improve look/feel of 'visible' checkbox - add to table?
+- Improve behaviour of "sync" - should only replace pulled values, not override.
+-
 
-For next week:
-- Have the web application output JSON for Nick
-- As above
+Urgent (for next week):
+- Upscaling images pulled from staff library.
+- Upload new scraper script file - will need documentation!
+-
+

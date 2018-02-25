@@ -1,5 +1,9 @@
 <% title "Update" %>
 
+<%= button_to faces_path, :class => "btn btn-default", :id => "back", :method => :get do %>
+    <span class="glyphicon glyphicon-chevron-left"></span>&nbsp; Back
+<% end %>
+
 <h1>Update staff member</h1>
 
 <% if @face.errors.any? %>
@@ -11,8 +15,4 @@
     </ul>
 <% end %>
 
-<%= render 'form' %>
-
-<p>
-  <%= link_to "Back to all staff members", faces_path %>
-</p>
+<%= render 'editform' %>

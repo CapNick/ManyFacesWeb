@@ -1,0 +1,37 @@
+<%= form_for @face do |f| %>
+    <p>
+      <%= f.label :name %><br/>
+      <%= f.text_field :name, :class => "form-control" %>
+    </p>
+    <p>
+      <%= f.label :type %><br/>
+      <%= f.text_field :_type, :class => "form-control" %>
+    </p>
+    <p>
+      <%= f.label :position %><br/>
+      <%= f.text_field :position, :class => "form-control" %>
+    </p>
+    <p>
+      <%= f.label :modules %><br/>
+      <%= f.text_field :modules, :class => "form-control" %>
+    </p>
+    <p>
+      <%= f.label :room %><br/>
+      <%= f.text_field :room, :class => "form-control" %>
+    </p>
+    <p>
+      <%= f.label :email %><br/>
+      <%= f.text_field :email, :class => "form-control" %>
+    </p>
+    <p>
+      <%= f.label :phone %><br/>
+      <%= f.text_field :phone, :class => "form-control" %>
+    </p>
+    <p>
+      <%= f.label 'Link to photo' %><br/>
+      <%= f.text_field :photo, :class => "form-control" %>
+    </p>
+    <p>
+      <%= f.submit "Save", :class => "btn btn-success" %>
+    </p>
+<% end %>

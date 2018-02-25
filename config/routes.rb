@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   post 'faces/scrape'
 
   # provides a number of paths
-  resources :faces
+  resources :faces do
+    collection do
+      post 'toggle_visible'
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

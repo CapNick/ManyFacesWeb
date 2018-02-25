@@ -128,6 +128,9 @@ GEM
     kaminari-activerecord (1.1.1)
       activerecord
       kaminari-core (= 1.1.1)
+    kaminari-bootstrap (3.0.1)
+      kaminari (>= 0.13.0)
+      rails
     kaminari-core (1.1.1)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -221,6 +224,7 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
     sexp_processor (4.10.0)
+    spawnling (2.1.6)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-commands-rspec (1.0.4)
@@ -279,6 +283,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   kaminari
+  kaminari-bootstrap
   launchy
   listen (~> 3.0.5)
   mysql2
@@ -288,6 +293,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
+  spawnling (~> 2.1)
   spring
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)

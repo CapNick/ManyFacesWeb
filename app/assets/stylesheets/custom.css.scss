@@ -2,10 +2,22 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+* {
+  font-size: 12.5px;
+  font-family: "FreeSans", "Arial", sans-serif;
+}
+
+.field, .actions {
+  margin-bottom: 5px;
+}
+
+#visible {
+  font-size: 10px;
+}
+
 body {
   margin-left: 10px;
   margin-right: 10px;
-  margin-bottom: 10px;
   font-size: 12.5px;
   font-family: "FreeSans", "Arial", sans-serif;
 }
@@ -18,16 +30,17 @@ th {
   text-align: left;
 }
 
-.field, .actions {
-  margin-bottom: 5px;
-}
-
 table {
   border-spacing: 0px;
+  margin-top: -10px;
 }
 
 #flash {
   margin-top: 5px;
+}
+
+.coloured {
+  background-color: #E9E9E9;
 }
 
 th, td {
@@ -40,6 +53,22 @@ th, td {
   margin-right: 5px;
 }
 
-#logout {
-  float:right;
+#back {
+  margin-top: 5px;
+  margin-bottom: -10px;
+}
+
+#logout, #help {
+  margin-left: 5px;
+  float: right;
+}
+
+#login {
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+
+.form-control {
+  width: 250px;
+  font-size: 12.5px;
 }

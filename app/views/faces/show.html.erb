@@ -1,31 +1,74 @@
 <% title "View" %>
 
+<%= button_to faces_path, :class => "btn btn-default", :id => "back", :method => :get do %>
+    <span class="glyphicon glyphicon-chevron-left"></span>&nbsp; Back
+<% end %>
+
 <h1>View staff member</h1>
 
 <p>
-  <b>Name:</b> <%= @face.name %>
+  <b>Name:</b>
+  <% if @face.ovr_name.to_s.empty? %>
+      <%= @face.name %>
+  <% else %>
+      <%= @face.ovr_name %>
+  <% end %>
 </p>
 <p>
-  <b>Type:</b> <%= @face._type %>
+  <b>Type:</b>
+  <% if @face.ovr_type.to_s.empty? %>
+      <%= @face._type %>
+  <% else %>
+      <%= @face.ovr_type %>
+  <% end %>
 </p>
 <p>
-  <b>Position:</b> <%= @face.position %>
+  <b>Position:</b>
+  <% if @face.ovr_position.to_s.empty? %>
+      <%= @face.position %>
+  <% else %>
+      <%= @face.ovr_position %>
+  <% end %>
 </p>
 <p>
-  <b>Modules:</b> <%= @face.modules %>
+  <b>Modules:</b>
+  <% if @face.ovr_modules.to_s.empty? %>
+      <%= @face.modules %>
+  <% else %>
+      <%= @face.ovr_modules %>
+  <% end %>
 </p>
 <p>
-  <b>Room:</b> <%= @face.room %>
+  <b>Room:</b>
+  <% if @face.ovr_room.to_s.empty? %>
+      <%= @face.room %>
+  <% else %>
+      <%= @face.ovr_room %>
+  <% end %>
 </p>
 <p>
-  <b>Email:</b> <%= @face.email %>
+  <b>Email:</b>
+  <% if @face.ovr_email.to_s.empty? %>
+      <%= @face.email %>
+  <% else %>
+      <%= @face.ovr_email %>
+  <% end %>
 </p>
 <p>
-  <b>Phone:</b> <%= @face.phone %>
+  <b>Phone:</b>
+  <% if @face.ovr_phone.to_s.empty? %>
+      <%= @face.phone %>
+  <% else %>
+      <%= @face.ovr_phone %>
+  <% end %>
 </p>
 <p>
-  <b>Link to photo:</b> <%= @face.photo %>
+  <b>Link to photo:</b>
+  <% if @face.ovr_photo.to_s.empty? %>
+      <%= @face.photo %>
+  <% else %>
+      <%= @face.ovr_photo %>
+  <% end %>
 </p>
 
-<%= button_to "Update this staff member", edit_face_path(@face), class: "field", method: :get %>
-<%= link_to "Back to all staff members", faces_path %>
+<%= button_to "Update this staff member", edit_face_path(@face), class: "btn btn-warning", method: :get %>
