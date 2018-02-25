@@ -1,10 +1,12 @@
-Minutes:
+To-do:
 
 - Help/contact information?
 - Improve look/feel of 'visible' checkbox - add to table?
-- Add more Bootstrap to warning/success messages at the top of the screen.
-- Improve behaviour of "sync" - should not delete everything and then add again, because override values would be lost.
+- Improve behaviour of "sync" - should only replace pulled values, not override.
 -
 
-For next week:
+Urgent (for next week):
+- Upscaling images pulled from staff library.
+- Upload new scraper script file - will need documentation!
 -
+

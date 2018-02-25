@@ -11,6 +11,10 @@
   margin-bottom: 5px;
 }
 
+#visible {
+  font-size: 10px;
+}
+
 body {
   margin-left: 10px;
   margin-right: 10px;
@@ -54,7 +58,8 @@ th, td {
   margin-bottom: -10px;
 }
 
-#logout {
+#logout, #help {
+  margin-left: 5px;
   float: right;
 }
 

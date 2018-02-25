@@ -12,7 +12,6 @@ class FacesController < ApplicationController
   before_action :get_face, only: [:edit, :update, :show, :destroy]
 
   def index
-    # @faces = Face.all
     @faces = Face.order('name').page(params[:page]).per(9)
     @faces_all = Face.all.where(visible: true)
   end
@@ -62,6 +61,12 @@ class FacesController < ApplicationController
     scrape_page "Technical"
     update_rooms
     redirect_to faces_path
+  end
+
+  def toggle_visible
+    @face = Face.find(params[:face])
+    @visible = !@face.visible
+    @face.update_attribute(:visible, @visible)
   end
 
   private

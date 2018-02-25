@@ -3,6 +3,11 @@
 <div id="logout">
   <%= button_to "Log out", destroy_user_session_path, :class => "btn btn-default", :method => :delete %>
 </div>
+<div id="help">
+  <%= button_to new_face_path, :class => "btn btn-default", :method => :get do %>
+      <span class="glyphicon glyphicon-question-sign"></span>
+  <% end %>
+</div>
 
 <h1>Staff members</h1>
 
@@ -27,11 +32,11 @@
     <th>Email</th>
     <th>Phone</th>
     <th>Photo</th>
-    <th colspan="2">Actions</th>
+    <th colspan="3">Actions</th>
   </tr>
 
   <% @faces.each do |face| %>
-      <tr class="<%= face.visible ? 'default' : 'coloured' %>">
+      <tr id="<%= face.id %>" class="<%= face.visible ? 'default' : 'coloured' %>">
       <td>
         <% if face.ovr_name.to_s.empty? %>
           <%= face.name %>
@@ -86,6 +91,17 @@
             <a href=<%= face.photo %>><%= face.photo %></a>
         <% else %>
             <a href=<%= face.ovr_photo %>><%= face.ovr_photo %></a>
+        <% end %>
+      </td>
+      <td>
+        <% if face.visible %>
+          <%= button_tag :class => "btn btn-default btn-visible", :onclick => "toggle_visible(#{face.id})" do %>
+            <span class="glyphicon glyphicon-eye-open"></span>
+          <% end %>
+        <% else %>
+            <%= button_tag :class => "btn btn-default btn-visible", :onclick => "toggle_visible(#{face.id})" do %>
+            <span class="glyphicon glyphicon-eye-close"></span>
+          <% end %>
         <% end %>
       </td>
       <td><%= button_to edit_face_path(face), :class => "btn btn-warning", :method => :get do %>
