@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124131449) do
+ActiveRecord::Schema.define(version: 20180301213241) do
 
   create_table "faces", force: :cascade do |t|
     t.string   "name"
     t.string   "room"
-    t.string   "modules"
     t.string   "email"
     t.string   "photo"
     t.datetime "created_at"
@@ -27,12 +26,13 @@ ActiveRecord::Schema.define(version: 20171124131449) do
     t.string   "ovr_name"
     t.string   "ovr_type"
     t.string   "ovr_position"
-    t.string   "ovr_modules"
     t.string   "ovr_room"
     t.string   "ovr_email"
     t.string   "ovr_phone"
     t.string   "ovr_photo"
     t.boolean  "visible",      default: true
+    t.string   "photo_file"
+    t.integer  "order"
   end
 
   create_table "users", force: :cascade do |t|

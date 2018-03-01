@@ -7,7 +7,7 @@
   font-family: "FreeSans", "Arial", sans-serif;
 }
 
-.field, .actions {
+.field, .action {
   margin-bottom: 5px;
 }
 
@@ -48,7 +48,7 @@ th, td {
   padding: 5px;
 }
 
-#addnew {
+.top-left-button {
   float: left;
   margin-right: 5px;
 }
@@ -58,7 +58,7 @@ th, td {
   margin-bottom: -10px;
 }
 
-#logout, #help {
+#logout, .help {
   margin-left: 5px;
   float: right;
 }
@@ -71,4 +71,41 @@ th, td {
 .form-control {
   width: 250px;
   font-size: 12.5px;
+}
+
+.glyphicon-refresh-animate {
+  -webkit-animation-name: rotateThis;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes rotateThis {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to  {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.modal-open {
+  padding-right: 0px !important;
+}
+
+#sortable {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 450px;
+}
+
+#sortable li {
+  margin: 3px 3px 3px 0;
+  padding: 1px;
+  float: left;
+  width: 100px;
+  height: 90px;
+  font-size: 4em;
+  text-align: center;
 }

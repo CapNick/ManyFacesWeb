@@ -2,85 +2,84 @@
     <p>
       <div style="float: left; margin-right: 30px">
         <%= f.label :name %><br/>
-        <%= f.text_field :name, :class => "form-control", :readonly => true %>
-      </div>
-      <div style="float: left; margin-right: 30px">
-        <%= f.label(:aapl, "Name (Override)") %><br/>
-        <%= f.text_field :ovr_name, :class => "form-control" %>
+        <%= f.text_field :name, :class => "form-control", :readonly => true, :data => {:toggle => "tooltip"}, :title => "The staff member's full name." %>
       </div>
       <div>
-        <%= f.label 'Visible?' %><br/>
-        <%= f.check_box :visible %>
+        <%= f.label(:aapl, "Name (Override)") %><br/>
+        <%= f.text_field :ovr_name, :class => "form-control", :data => {:toggle => "tooltip"}, :title => "The staff member's full name/nickname." %>
       </div>
     </p>
     <p>
     <div style="float: left; margin-right: 30px">
       <%= f.label :type %><br/>
-      <%= f.text_field :_type, :class => "form-control", :readonly => true %>
+      <%= f.text_field :_type, :class => "form-control", :readonly => true, :data => {:toggle => "tooltip"}, :title => "Are they an academic, administrative or technical member of staff?" %>
     </div>
     <div>
       <%= f.label(:aapl, "Type (Override)") %><br/>
-      <%= f.text_field :ovr_type, :class => "form-control" %>
+      <%= f.text_field :ovr_type, :class => "form-control", :data => {:toggle => "tooltip"}, :title => "Are they an academic, administrative or technical member of staff?" %>
     </div>
     </p>
     <p>
     <div style="float: left; margin-right: 30px">
       <%= f.label :position %><br/>
-      <%= f.text_field :position, :class => "form-control", :readonly => true %>
+      <%= f.text_field :position, :class => "form-control", :readonly => true, :data => {:toggle => "tooltip"}, :title => "The staff member's role/position in the school." %>
     </div>
     <div>
       <%= f.label(:aapl, "Position (Override)") %><br/>
-      <%= f.text_field :ovr_position, :class => "form-control" %>
-    </div>
-    </p>
-    <p>
-    <div style="float: left; margin-right: 30px">
-      <%= f.label :modules %><br/>
-      <%= f.text_field :modules, :class => "form-control", :readonly => true %>
-    </div>
-    <div>
-      <%= f.label(:aapl, "Modules (Override)") %><br/>
-      <%= f.text_field :ovr_modules, :class => "form-control" %>
+      <%= f.text_field :ovr_position, :class => "form-control", :data => {:toggle => "tooltip"}, :title => "The staff member's role/position in the school." %>
     </div>
     </p>
     <p>
     <div style="float: left; margin-right: 30px">
       <%= f.label :room %><br/>
-      <%= f.text_field :room, :class => "form-control", :readonly => true %>
+      <%= f.text_field :room, :class => "form-control", :readonly => true, :data => {:toggle => "tooltip"}, :title => "The staff member's room/address in the school." %>
     </div>
     <div>
       <%= f.label(:aapl, "Room (Override)") %><br/>
-      <%= f.text_field :ovr_room, :class => "form-control" %>
+      <%= f.text_field :ovr_room, :class => "form-control", :data => {:toggle => "tooltip"}, :title => "The staff member's room/address in the school." %>
     </div>
     </p>
     <p>
     <div style="float: left; margin-right: 30px">
       <%= f.label :email %><br/>
-      <%= f.text_field :email, :class => "form-control", :readonly => true %>
+      <%= f.text_field :email, :class => "form-control", :readonly => true, :data => {:toggle => "tooltip"}, :title => "The staff member's university email address." %>
     </div>
     <div>
       <%= f.label(:aapl, "Email (Override)") %><br/>
-      <%= f.text_field :ovr_email, :class => "form-control" %>
+      <%= f.text_field :ovr_email, :class => "form-control", :data => {:toggle => "tooltip"}, :title => "The staff member's email address." %>
     </div>
     </p>
     <p>
     <div style="float: left; margin-right: 30px">
       <%= f.label :phone %><br/>
-      <%= f.text_field :phone, :class => "form-control", :readonly => true %>
+      <%= f.text_field :phone, :class => "form-control", :readonly => true, :data => {:toggle => "tooltip"}, :title => "A telephone number for contacting the staff member." %>
     </div>
     <div>
       <%= f.label(:aapl, "Phone (Override)") %><br/>
-      <%= f.text_field :ovr_phone, :class => "form-control" %>
+      <%= f.text_field :ovr_phone, :class => "form-control", :data => {:toggle => "tooltip"}, :title => "A telephone number for contacting the staff member." %>
     </div>
     </p>
     <p>
     <div style="float: left; margin-right: 30px">
       <%= f.label 'Link to photo' %><br/>
-      <%= f.text_field :photo, :class => "form-control", :readonly => true %>
+      <%= f.text_field :photo, :class => "form-control", :readonly => true, :data => {:toggle => "tooltip"}, :title => "The URL of the staff member's photo. This will be used to generate their 3D model." %>
     </div>
     <div>
-      <%= f.label(:aapl, "Photo (Override)") %><br/>
-      <%= f.text_field :ovr_photo, :class => "form-control" %>
+      <%= f.label(:aapl, "Link to photo (Override)") %><br/>
+      <%= f.text_field :ovr_photo, :class => "form-control", :data => {:toggle => "tooltip"}, :title => "The URL of the staff member's photo. This will be used to generate their 3D model." %>
+    </div>
+    </p>
+    <p>
+    <% if @face.photo_file? %>
+      <div style="float: left; margin-right: 30px">
+        <%= image_tag @face.photo_file.thumb.url %>
+        <%= f.label 'Remove file?' %>
+        <%= f.check_box :remove_photo_file %>
+      </div>
+    <% end %>
+    <div>
+      <%= f.label 'Upload photo' %><br/>
+      <%= f.file_field :photo_file, :class => "form-control", :data => {:toggle => "tooltip"}, :title => "The staff member's photo as an image file. This will be used to generate their 3D model." %>
     </div>
     </p>
     <p>

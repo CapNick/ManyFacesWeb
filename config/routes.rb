@@ -6,7 +6,11 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'faces#index'
+
+  # get
   get 'about', to: 'welcome#about'
+  get 'faces/reorder', to: 'faces#reorder'
+  # post
   post 'faces/scrape'
 
   # provides a number of paths

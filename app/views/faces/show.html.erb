@@ -31,14 +31,6 @@
   <% end %>
 </p>
 <p>
-  <b>Modules:</b>
-  <% if @face.ovr_modules.to_s.empty? %>
-      <%= @face.modules %>
-  <% else %>
-      <%= @face.ovr_modules %>
-  <% end %>
-</p>
-<p>
   <b>Room:</b>
   <% if @face.ovr_room.to_s.empty? %>
       <%= @face.room %>

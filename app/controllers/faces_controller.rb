@@ -55,7 +55,7 @@ class FacesController < ApplicationController
   end
 
   def scrape
-    Face.delete_all
+    # Face.delete_all
     scrape_page "Academic"
     scrape_page "Administrative"
     scrape_page "Technical"
@@ -69,13 +69,16 @@ class FacesController < ApplicationController
     @face.update_attribute(:visible, @visible)
   end
 
+  def reorder
+  end
+
   private
     def get_face
       @face = Face.find(params[:id])
     end
 
     def face_params
-      params.require(:face).permit(:name, :_type, :position, :modules, :room, :email, :phone, :photo, :visible, :ovr_name, :ovr_type, :ovr_position, :ovr_modules, :ovr_room, :ovr_email, :ovr_phone, :ovr_photo)
+      params.require(:face).permit(:name, :_type, :position, :room, :email, :phone, :photo, :photo_file, :visible, :ovr_name, :ovr_type, :ovr_position, :ovr_room, :ovr_email, :ovr_phone, :ovr_photo, :remove_photo_file)
     end
 
   def scrape_page(type)
@@ -97,7 +100,14 @@ class FacesController < ApplicationController
           title = row.css('td')[2].text # extract role in school
           email = row.css('a')[0]['href'] + '@nottingham.ac.uk' # extract email address
           image_url = uri + 'staff-images/' + first_name.downcase + last_name.downcase + '.jpg' # extract portrait photo
-          Face.create(:name => name, :room => "None", :modules => "None", :email => email, :photo => image_url, :phone => contact, :position => title, :_type => type, :url => webpage)
+          @face = Face.all.where(name: name).first
+          if @face
+            # puts "updating existing..."
+            @face.update_attributes(:email => email, :photo => image_url, :phone => contact, :position => title, :_type => type, :url => webpage)
+          else
+            # puts "creating new..."
+            Face.create(:name => name, :room => "None", :email => email, :photo => image_url, :phone => contact, :position => title, :_type => type, :url => webpage)
+          end
         end
       end
     end

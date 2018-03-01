@@ -8,3 +8,14 @@ function toggle_visible(id) {
         }
     });
 }
+
+$(document).ready(function() {
+    $("#btn-sync").click(function() {
+        var icon = $(this).find(".glyphicon.glyphicon-refresh");
+        animateClass = "glyphicon-refresh-animate";
+        icon.addClass(animateClass);
+    });
+
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+});

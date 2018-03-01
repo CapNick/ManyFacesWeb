@@ -1,5 +1,30 @@
 <% title "New" %>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="padding: 0px" class="modal-title" id="exampleModalLabel">Help information</h3>
+      </div>
+      <div class="modal-body">
+        This page lets you add a new staff member to the system's database.<br><br>
+        Simply fill out each of the fields on the left with the appropriate information, and then click 'Save' to add them to it.<br><br>
+        Don't worry if you make a mistake - all of the information can be edited later.<br><br>
+        Finally, if you're not sure exactly what information needs to be entered, simply hover your cursor over each field for a hint.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="help">
+  <%= button_tag :style => "margin-top: 5px;", :class => "btn btn-default", :data => {:toggle => "modal", :target => "#exampleModal"} do %>
+      <span class="glyphicon glyphicon-question-sign"></span>
+  <% end %>
+</div>
+
 <%= button_to faces_path, :class => "btn btn-default", :id => "back", :method => :get do %>
     <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Back
 <% end %>
