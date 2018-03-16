@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :faces do
     collection do
       post 'toggle_visible'
+      post 'update_order'
     end
   end
 

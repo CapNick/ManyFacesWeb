@@ -19,6 +19,7 @@
         button in the 'Actions' column of their row.<br><br>
         Staff members whose rows are greyed out will <strong>not</strong> be displayed on the staff board. To toggle this visibility, simply click the <%= button_tag :class => "btn btn-default btn-visible" do %><span class="glyphicon glyphicon-eye-open"></span><% end %>
         button in the 'Actions' column of their row.<br><br>
+        Finally, to modify the order in which the ...
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -37,12 +38,9 @@
 </div>
 
 <h1>Staff members</h1>
-
-  <div class="top-left-button">
-    <%= button_to new_face_path, :class => "btn btn-success", :method => :get do %>
-        <span class="glyphicon glyphicon-plus"></span>&nbsp; New staff member
-    <% end %>
-  </div>
+  <%= button_to new_face_path, :class => "btn btn-success top-left-button", :method => :get do %>
+      <span class="glyphicon glyphicon-plus"></span>&nbsp; New staff member
+  <% end %>
   <%= button_to 'faces/reorder', :id => "btn-reorder", :class => "btn btn-info top-left-button", :method => :get do %>
       <span class="glyphicon glyphicon-sort"></span><span class="glyphicon glyphicon-user"></span>&nbsp; Reorder Faces
   <% end %>
@@ -50,7 +48,11 @@
         <span class="glyphicon glyphicon-refresh"></span>&nbsp; Sync
   <% end %>
 
-<%= paginate(@faces) %>
+<% if @faces.length == 0 %>
+    <div><%= paginate(@faces) %></div>
+<% else %>
+    <div style="margin-bottom: -10px"><%= paginate(@faces) %></div>
+<% end %>
 
 <table>
   <tr>

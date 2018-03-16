@@ -55,7 +55,7 @@ class FacesController < ApplicationController
   end
 
   def scrape
-    # Face.delete_all
+    $order = 0
     scrape_page "Academic"
     scrape_page "Administrative"
     scrape_page "Technical"
@@ -65,21 +65,40 @@ class FacesController < ApplicationController
 
   def toggle_visible
     @face = Face.find(params[:face])
-    @visible = !@face.visible
-    @face.update_attribute(:visible, @visible)
+    visible = !@face.visible
+    @face.update_attribute(:visible, visible)
   end
 
   def reorder
+    @faces = Face.all.order('_index')
+  end
+
+  def update_order
+    order = params[:order]
+    index = 0
+    order.split(',').each do |obj|
+      vals = obj.split('-')
+      @face = Face.find(vals[0])
+      unless @face._index == index
+        @face.update_attribute(:_index, index)
+      end
+      unless @face.label == vals[1]
+        @face.update_attribute(:label, vals[1])
+      end
+      index += 1
+    end
+    redirect_to faces_path
   end
 
   private
-    def get_face
-      @face = Face.find(params[:id])
-    end
 
-    def face_params
-      params.require(:face).permit(:name, :_type, :position, :room, :email, :phone, :photo, :photo_file, :visible, :ovr_name, :ovr_type, :ovr_position, :ovr_room, :ovr_email, :ovr_phone, :ovr_photo, :remove_photo_file)
-    end
+  def get_face
+    @face = Face.find(params[:id])
+  end
+
+  def face_params
+    params.require(:face).permit(:name, :_type, :position, :room, :email, :phone, :photo, :photo_file, :visible, :ovr_name, :ovr_type, :ovr_position, :ovr_room, :ovr_email, :ovr_phone, :ovr_photo, :remove_photo_file)
+  end
 
   def scrape_page(type)
     field = type.to_s.downcase # academic, administrative or technical
@@ -100,13 +119,15 @@ class FacesController < ApplicationController
           title = row.css('td')[2].text # extract role in school
           email = row.css('a')[0]['href'] + '@nottingham.ac.uk' # extract email address
           image_url = uri + 'staff-images/' + first_name.downcase + last_name.downcase + '.jpg' # extract portrait photo
+          order = $order
+          $order += 1
           @face = Face.all.where(name: name).first
           if @face
             # puts "updating existing..."
             @face.update_attributes(:email => email, :photo => image_url, :phone => contact, :position => title, :_type => type, :url => webpage)
           else
             # puts "creating new..."
-            Face.create(:name => name, :room => "None", :email => email, :photo => image_url, :phone => contact, :position => title, :_type => type, :url => webpage)
+            Face.create(:name => name, :room => "None", :email => email, :photo => image_url, :phone => contact, :position => title, :_type => type, :url => webpage, :_index => order, :label => "")
           end
         end
       end

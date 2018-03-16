@@ -32,12 +32,14 @@
 <h1>Add new staff member</h1>
 
 <% if @face.errors.any? %>
-    <h4>The following errors prevented the staff member from being created:</h4>
-    <ul>
-      <% @face.errors.full_messages.each do |err| %>
-          <li><%= err %></li>
-      <% end %>
-    </ul>
+    <div class="alert alert-danger">
+      <p>The following errors prevented the staff member from being created:</p>
+      <ul>
+        <% @face.errors.full_messages.each do |err| %>
+            <li><%= err %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 
 <%= render 'newform' %>

@@ -35,12 +35,14 @@
 <h1>Update staff member</h1>
 
 <% if @face.errors.any? %>
-    <h4>The following errors prevented the staff member from being updated:</h4>
-    <ul>
-      <% @face.errors.full_messages.each do |err| %>
-          <li><%= err %></li>
-      <% end %>
-    </ul>
+    <div class="alert alert-danger">
+      <p>The following errors prevented the staff member from being updated:</p>
+      <ul>
+        <% @face.errors.full_messages.each do |err| %>
+            <li><%= err %></li>
+        <% end %>
+      </ul>
+    </div>
 <% end %>
 
 <%= render 'editform' %>

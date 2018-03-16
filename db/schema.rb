@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301213241) do
+ActiveRecord::Schema.define(version: 20180315223535) do
 
   create_table "faces", force: :cascade do |t|
     t.string   "name"
@@ -32,7 +32,8 @@ ActiveRecord::Schema.define(version: 20180301213241) do
     t.string   "ovr_photo"
     t.boolean  "visible",      default: true
     t.string   "photo_file"
-    t.integer  "order"
+    t.integer  "_index"
+    t.string   "label"
   end
 
   create_table "users", force: :cascade do |t|

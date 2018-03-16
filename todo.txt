@@ -1,12 +1,5 @@
 To-do:
+- Update the JSON which is returned?
 
-- Help/contact information?
-- Improve look/feel of 'visible' checkbox - add to table?
-- Improve behaviour of "sync" - should only replace pulled values, not override.
--
-
-Urgent (for next week):
-- Upscaling images pulled from staff library.
-- Upload new scraper script file - will need documentation!
--
-
+Urgent (for next meeting):
+- Add the ability to reorder faces

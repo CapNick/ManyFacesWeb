@@ -32,7 +32,6 @@ th {
 
 table {
   border-spacing: 0px;
-  margin-top: -10px;
 }
 
 #flash {
@@ -97,15 +96,23 @@ th, td {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 450px;
+  width: 620px;
 }
 
 #sortable li {
-  margin: 3px 3px 3px 0;
-  padding: 1px;
+  margin: 1px 1px 1px 1px;
+  padding: 2px;
   float: left;
   width: 100px;
   height: 90px;
-  font-size: 4em;
+  text-align: center;
+}
+
+#save-order {
+  margin-bottom: 15px;
+}
+
+.faces-label {
+  width: 94px;
   text-align: center;
 }
