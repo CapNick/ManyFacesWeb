@@ -13,7 +13,7 @@ class FacesController < ApplicationController
 
   def index
     @faces = Face.order('name').page(params[:page]).per(9)
-    @faces_all = Face.all.where(visible: true)
+    @faces_all = Face.where(visible: true)
   end
 
   def new
@@ -36,9 +36,10 @@ class FacesController < ApplicationController
   def create
     # render plain: params[:face].inspect
     @face = Face.new(face_params)
+    @face._index = Face.order('_index DESC').first._index + 1
     if @face.save
       flash[:notice] = "Staff member was successfully created."
-      redirect_to face_path(@face)
+      redirect_to faces_path
     else
       # reload the /faces/new page
       render 'new'
@@ -49,8 +50,10 @@ class FacesController < ApplicationController
   end
 
   def destroy
+    old_index = @face._index
     @face.destroy
     flash[:notice] = "Staff member was successfully deleted."
+    Face.where('_index > ?', old_index).update_all('_index = _index - 1')
     redirect_to faces_path
   end
 
@@ -64,26 +67,38 @@ class FacesController < ApplicationController
   end
 
   def toggle_visible
+    # find the face whose visibility to toggle
     @face = Face.find(params[:face])
+    old_index = @face._index
     visible = !@face.visible
-    @face.update_attribute(:visible, visible)
+    # set index to -1 if now invisible
+    # or the maximum index if now visible
+    new_index = visible ? Face.order('_index DESC').first._index + 1 : -1
+    @face.update_attributes(visible: visible, _index: new_index)
+    unless visible
+      # decrement all indexes that follow
+      Face.where('_index > ?', old_index).update_all('_index = _index - 1')
+    end
+
   end
 
   def reorder
-    @faces = Face.all.order('_index')
+    @faces = Face.where('_index >= ?', 0).order('_index')
   end
 
   def update_order
     order = params[:order]
     index = 0
     order.split(',').each do |obj|
-      vals = obj.split('-')
-      @face = Face.find(vals[0])
-      unless @face._index == index
-        @face.update_attribute(:_index, index)
-      end
-      unless @face.label == vals[1]
-        @face.update_attribute(:label, vals[1])
+      if obj != 'blank'
+        vals = obj.split('-')
+        @face = Face.find(vals[0])
+        unless @face._index == index
+          @face.update_attribute(:_index, index)
+        end
+        unless @face.label == vals[1]
+          @face.update_attribute(:label, vals[1])
+        end
       end
       index += 1
     end

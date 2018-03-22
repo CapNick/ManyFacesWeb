@@ -10,11 +10,17 @@ function toggle_visible(id) {
 }
 
 function update_order() {
+    $('#progressbar').css('display', 'block');
+
     var order = [];
-    $('#sortable li').each(function(e) {
-        var id = $(this).attr('id');
-        var label = $("#label-" + id).val();
-        order.push(id + "-" + label);
+    $('#ordering li').each(function(e) {
+        if ($(this).hasClass('blank')) {
+            order.push('blank');
+        } else {
+            var id = $(this).attr('id');
+            var label = $("#label-" + id).val();
+            order.push(id + "-" + label);
+        }
     });
 
     $.ajax({
@@ -24,6 +30,20 @@ function update_order() {
     });
 }
 
+function add_blank() {
+    $("#ordering").prepend("" +
+        "<li style='border: 1px dashed #c5c5c5'" +
+        "class='blank'>" +
+        "<button style='width: 50%; position: absolute; top: 35px; left: 25px'" +
+        "onclick='delete_blank(this)'>" +
+        "Delete</button>" +
+        "</li>");
+}
+
+function delete_blank(button) {
+    button.parentNode.remove();
+}
+
 $(document).ready(function() {
     $("#btn-sync").click(function() {
         var icon = $(this).find(".glyphicon.glyphicon-refresh");
@@ -31,5 +51,11 @@ $(document).ready(function() {
         icon.addClass(animateClass);
     });
 
-    $("ul#sortable").sortable();
+    $("#ordering").sortable({
+        placeholder: "placeholder"
+    });
+
+    $( "#progressbar" ).progressbar({
+        value: false
+    });
 });

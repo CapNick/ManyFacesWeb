@@ -1,5 +1,7 @@
 <% title "Reorder" %>
 
+<div id="progressbar"></div>
+
 <div class="help">
   <%= button_tag :style => "margin-top: 5px;", :class => "btn btn-default", :data => {:toggle => "modal", :target => "#exampleModal"} do %>
       <span class="glyphicon glyphicon-question-sign"></span>
@@ -16,12 +18,29 @@
     <span class="glyphicon glyphicon-floppy-disk"></span>&nbsp; Save this order
 <% end %>
 
-<ul id="sortable">
+<%= button_tag :class => "btn btn-default", :id => "add-blank", :onclick => "add_blank()" do %>
+    <span class="glyphicon glyphicon-plus"></span>&nbsp; Add blank space
+<% end %>
+
+<ul id="ordering">
+  <% index = 0 %>
   <% @faces.each do |face| %>
-    <li class="ui-state-default" id="<%= face.id %>">
-      <% id = "label-" + face.id.to_s %>
-      <%= text_field_tag "faces-label", nil, :class => "faces-label", :id => id, :value => face.label %>
-      <%= face.name %>
-    </li>
+    <% if face.visible %>
+      <% while face._index != index %>
+        <li style="border: 1px dashed #c5c5c5" class="blank">
+          <button style="width: 50%; position: absolute; top: 35px; left: 25px" onclick="delete_blank(this)">Delete</button>
+        </li>
+        <% index += 1 %>
+      <% end %>
+
+      <li class="ui-state-default" id="<%= face.id %>">
+        <% id = "label-" + face.id.to_s %>
+        <%= text_field_tag "faces-label", nil, :class => "faces-label", :id => id, :value => face.label %>
+        <%= face.name %>
+      </li>
+      <% index += 1 %>
+    <% else %>
+      <% index += 1 %>
+    <% end %>
   <% end %>
 </ul>
