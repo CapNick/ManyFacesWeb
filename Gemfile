@@ -22,6 +22,7 @@ gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
 group :production do
   # mysql for production

@@ -1,5 +1,13 @@
 To-do:
-- Update the JSON which is returned?
 
-Urgent (for next meeting):
-- Add the ability to reorder faces
+- Add photo to index/edit staff page
+- Remove API authorisation
+- Update the JSON returned
+- Double-check the design of all pages
+- Add validation/verification checks if necessary
+- Look into testing
+
+Tasks for today:
+
+- Add dimensions
+- Look into model downloading

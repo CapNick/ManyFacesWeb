@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: d486b31b192a2924b1913e080ad23460e6b96d31
+  specs:
+    jquery-datatables-rails (3.4.0)
+      actionpack (>= 3.1)
+      jquery-rails
+      railties (>= 3.1)
+      sass-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -292,6 +302,7 @@ DEPENDENCIES
   high_voltage
   httparty
   jbuilder (~> 2.5)
+  jquery-datatables-rails!
   jquery-rails
   jquery-ui-rails
   kaminari

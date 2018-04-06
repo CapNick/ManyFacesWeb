@@ -45,17 +45,32 @@ function delete_blank(button) {
 }
 
 $(document).ready(function() {
-    $("#btn-sync").click(function() {
+    $('#btn-sync').click(function() {
         var icon = $(this).find(".glyphicon.glyphicon-refresh");
         animateClass = "glyphicon-refresh-animate";
         icon.addClass(animateClass);
     });
 
-    $("#ordering").sortable({
+    $('#ordering').sortable({
         placeholder: "placeholder"
     });
 
-    $( "#progressbar" ).progressbar({
+    $('#progressbar').progressbar({
         value: false
+    });
+
+    $('.datatable').dataTable({
+       columnDefs: [{
+          targets: [7, 8, 9],
+          sortable: false}]
+    });
+    $('.datatable').each(function(){
+        var datatable = $(this);
+        var search_input = datatable.closest('.dataTables_wrapper').find('div[id$=_filter] input');
+        search_input.attr('placeholder', 'e.g. John Smith');
+        search_input.attr('id', 'search');
+        search_input.addClass('form-control input-sm');
+        var length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
+        length_sel.addClass('form-control input-sm');
     });
 });

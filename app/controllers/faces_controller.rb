@@ -12,7 +12,7 @@ class FacesController < ApplicationController
   before_action :get_face, only: [:edit, :update, :show, :destroy]
 
   def index
-    @faces = Face.order('name').page(params[:page]).per(9)
+    @faces = Face.order('name')
     @faces_all = Face.where(visible: true)
   end
 

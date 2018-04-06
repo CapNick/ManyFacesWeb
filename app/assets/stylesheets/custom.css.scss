@@ -26,11 +26,7 @@ a {
   text-decoration: none;
 }
 
-th {
-  text-align: left;
-}
-
-table {
+#table {
   border-spacing: 0px;
 }
 
@@ -42,9 +38,10 @@ table {
   background-color: #E9E9E9;
 }
 
-th, td {
+#table th, #table td {
   border-bottom: 1px solid black;
   padding: 5px;
+  text-align: left;
 }
 
 .top-left-button {
