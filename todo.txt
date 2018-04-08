@@ -6,8 +6,14 @@ To-do:
 - Double-check the design of all pages
 - Add validation/verification checks if necessary
 - Look into testing
+- Look into model downloading
 
 Tasks for today:
 
-- Add dimensions
-- Look into model downloading
+- Continue with dimensions:
+    - When a blank is added
+    - When a blank is removed
+    - Can the user view/swap invisible staff?
+
+- Reorder faces help information
+- Set up dimensions table

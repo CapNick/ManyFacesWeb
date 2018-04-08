@@ -4,7 +4,13 @@ function toggle_visible(id) {
         url: "/faces/toggle_visible",
         data: "face="+id,
         success: function() {
-            location.reload();
+            var selector = '#' + id;
+            var row = $(selector);
+            if (row.hasClass('default')) {
+                row.attr('class', 'coloured');
+            } else {
+                row.attr('class', 'default');
+            }
         }
     });
 }
@@ -31,7 +37,7 @@ function update_order() {
 }
 
 function add_blank() {
-    $("#ordering").prepend("" +
+    $('#ordering').prepend("" +
         "<li style='border: 1px dashed #c5c5c5'" +
         "class='blank'>" +
         "<button style='width: 50%; position: absolute; top: 35px; left: 25px'" +
@@ -72,5 +78,30 @@ $(document).ready(function() {
         search_input.addClass('form-control input-sm');
         var length_sel = datatable.closest('.dataTables_wrapper').find('div[id$=_length] select');
         length_sel.addClass('form-control input-sm');
+    });
+
+    $('.btn-visible').click(function() {
+        var span = $(this).children('span');
+        var visible = span.hasClass('glyphicon-eye-open');
+        var oldClass = visible ? 'glyphicon-eye-open' : 'glyphicon-eye-close';
+        var newClass = visible ? 'glyphicon-eye-close' : 'glyphicon-eye-open';
+        span.addClass(newClass).removeClass(oldClass);
+    });
+
+    var dimens = $('#dimensions');
+    dimens.selectmenu();
+    dimens.on('selectmenuchange', function() {
+        var xy = $(this).val().split(' x ');
+        var x = parseInt(xy[0]);
+        var y = parseInt(xy[1]);
+        var width = x * 102;
+        $('#ordering').css('width', width + 'px');
+        var total = x * y;
+        var items = $('#ordering li');
+        var diff = items.length - total;
+        items.show();
+        if (diff > 0) {
+            items.slice(-diff).hide();
+        }
     });
 });

@@ -3,6 +3,17 @@
 <div id="progressbar"></div>
 
 <div class="help">
+  <div style="display: inline-block">
+    <label for="dimensions">Dimensions:</label>
+    <select id="dimensions" name="dimensions">
+      <option>4 x 10</option>
+      <option>5 x 10</option>
+      <option selected = "selected">6 x 10</option>
+      <option>7 x 10</option>
+      <option>8 x 10</option>
+    </select>
+  </div>
+
   <%= button_tag :style => "margin-top: 5px;", :class => "btn btn-default", :data => {:toggle => "modal", :target => "#exampleModal"} do %>
       <span class="glyphicon glyphicon-question-sign"></span>
   <% end %>
