@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406133103) do
+ActiveRecord::Schema.define(version: 20180409181103) do
 
   create_table "faces", force: :cascade do |t|
     t.string   "name"
@@ -35,6 +35,12 @@ ActiveRecord::Schema.define(version: 20180406133103) do
     t.integer  "_index"
     t.string   "label"
     t.string   "model"
+  end
+
+  create_table "layouts", force: :cascade do |t|
+    t.integer "width"
+    t.integer "height"
+    t.boolean "selected"
   end
 
   create_table "users", force: :cascade do |t|

@@ -84,12 +84,15 @@ class FacesController < ApplicationController
 
   def reorder
     @faces = Face.where('_index >= ?', 0).order('_index')
+    @layouts = Layout.order('width')
+    @selected = Layout.where(selected: true).first
   end
 
   def update_order
+    # update face indexes
     order = params[:order]
     index = 0
-    order.split(',').each do |obj|
+    order.each do |obj|
       if obj != 'blank'
         vals = obj.split('-')
         @face = Face.find(vals[0])
@@ -102,6 +105,16 @@ class FacesController < ApplicationController
       end
       index += 1
     end
+
+    # update dimensions
+    width = params[:width]
+    height = params[:height]
+    @newLayout = Layout.where(width: width, height: height).first
+    @oldLayout = Layout.where(selected: true).first
+    @oldLayout.selected = false
+    @newLayout.selected = true
+    @oldLayout.save
+    @newLayout.save
     redirect_to faces_path
   end
 

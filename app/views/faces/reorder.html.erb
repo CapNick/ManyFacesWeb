@@ -6,11 +6,13 @@
   <div style="display: inline-block">
     <label for="dimensions">Dimensions:</label>
     <select id="dimensions" name="dimensions">
-      <option>4 x 10</option>
-      <option>5 x 10</option>
-      <option selected = "selected">6 x 10</option>
-      <option>7 x 10</option>
-      <option>8 x 10</option>
+      <% @layouts.each do |layout| %>
+        <% if layout.selected? %>
+          <option selected="selected"><%= layout.width %> x <%= layout.height %></option>
+        <% else %>
+          <option><%= layout.width %> x <%= layout.height %></option>
+        <% end %>
+      <% end %>
     </select>
   </div>
 
@@ -55,3 +57,10 @@
     <% end %>
   <% end %>
 </ul>
+
+<script>
+    $(document).ready(function() {
+        var layout = "<%= @selected.width %> x <%= @selected.height %>";
+        update_dimens(layout);
+    });
+</script>

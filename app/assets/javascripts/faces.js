@@ -29,10 +29,12 @@ function update_order() {
         }
     });
 
+    var dimens = $('#dimensions').val().split(' x ');
+
     $.ajax({
         method: "POST",
         url: "/faces/update_order",
-        data: "order="+order
+        data: {'order': order, 'width': dimens[0], 'height': dimens[1]}
     });
 }
 
@@ -44,10 +46,37 @@ function add_blank() {
         "onclick='delete_blank(this)'>" +
         "Delete</button>" +
         "</li>");
+    window.cutoff = window.cutoff + 1;
+    update_cutoff();
 }
 
 function delete_blank(button) {
     button.parentNode.remove();
+    window.cutoff = window.cutoff - 1;
+    update_cutoff();
+}
+
+function update_dimens(dimens) {
+    var xy = dimens.split(' x ');
+    var x = parseInt(xy[0]);
+    var y = parseInt(xy[1]);
+    var width = x * 102;
+    $('#ordering').css('width', width + 'px');
+    var total = x * y;
+    var items = $('#ordering li');
+    window.cutoff = items.length - total;
+    update_cutoff();
+}
+
+function update_cutoff() {
+    var items = $('#ordering li');
+    // remove colour from face no longer being cut-off
+    var shown = items.length - window.cutoff;
+    items.slice(0, shown).not('.blank').css('background-color', '#f6f6f6');
+    // colour new cut-off face
+    if (window.cutoff > 0) {
+        items.slice(-window.cutoff).not('.blank').css('background-color', '#d9d9d9');
+    }
 }
 
 $(document).ready(function() {
@@ -58,7 +87,10 @@ $(document).ready(function() {
     });
 
     $('#ordering').sortable({
-        placeholder: "placeholder"
+        placeholder: "placeholder",
+        stop: function(event, ui) {
+            update_cutoff();
+        }
     });
 
     $('#progressbar').progressbar({
@@ -91,17 +123,6 @@ $(document).ready(function() {
     var dimens = $('#dimensions');
     dimens.selectmenu();
     dimens.on('selectmenuchange', function() {
-        var xy = $(this).val().split(' x ');
-        var x = parseInt(xy[0]);
-        var y = parseInt(xy[1]);
-        var width = x * 102;
-        $('#ordering').css('width', width + 'px');
-        var total = x * y;
-        var items = $('#ordering li');
-        var diff = items.length - total;
-        items.show();
-        if (diff > 0) {
-            items.slice(-diff).hide();
-        }
+        update_dimens($(this).val());
     });
 });

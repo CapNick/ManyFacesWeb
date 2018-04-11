@@ -7,13 +7,9 @@ To-do:
 - Add validation/verification checks if necessary
 - Look into testing
 - Look into model downloading
+- Reorder faces help information
+
 
 Tasks for today:
 
-- Continue with dimensions:
-    - When a blank is added
-    - When a blank is removed
-    - Can the user view/swap invisible staff?
-
-- Reorder faces help information
-- Set up dimensions table
+-
