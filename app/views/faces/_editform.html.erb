@@ -71,15 +71,12 @@
     </p>
     <p>
     <% if @face.model_file? %>
-      <div style="float: left; margin-right: 30px">
-        <%= f.label 'Remove model file?' %>
-        <%= f.check_box :remove_model_file %>
-      </div>
-    <% end %>
-    <div>
+      <%= f.label 'Remove model file?' %>
+      <%= f.check_box :remove_model_file %>
+    <% else %>
       <%= f.label 'Upload model file' %><br/>
       <%= f.file_field :model_file, :class => "form-control", :data => {:toggle => "tooltip"}, :title => "The staff member's 3D model as an .obj file. This will be displayed on the digital staff board." %>
-    </div>
+    <% end %>
     </p>
     <p>
       <%= f.submit "Save", :class => "btn btn-success" %>
