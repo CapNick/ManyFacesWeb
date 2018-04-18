@@ -109,12 +109,18 @@ class FacesController < ApplicationController
     # update dimensions
     width = params[:width]
     height = params[:height]
-    @newLayout = Layout.where(width: width, height: height).first
     @oldLayout = Layout.where(selected: true).first
-    @oldLayout.selected = false
-    @newLayout.selected = true
-    @oldLayout.save
-    @newLayout.save
+    puts @oldLayout.width
+    puts @oldLayout.height
+    puts width
+    puts height
+    unless @oldLayout.width.to_s == width && @oldLayout.height.to_s == height
+      @newLayout = Layout.where(width: width, height: height).first
+      @oldLayout.selected = false
+      @newLayout.selected = true
+      @oldLayout.save
+      @newLayout.save
+    end
     redirect_to faces_path
   end
 

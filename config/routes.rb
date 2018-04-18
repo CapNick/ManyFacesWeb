@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post 'faces/scrape'
 
   # provides a number of paths
-  resources :faces do
+  resources :faces, except: [:show] do
     collection do
       post 'toggle_visible'
       post 'update_order'
