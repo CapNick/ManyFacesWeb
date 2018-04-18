@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   root 'faces#index'
 
   # get
-  get 'about', to: 'welcome#about'
   get 'faces/reorder', to: 'faces#reorder'
   # post
   post 'faces/scrape'
@@ -18,8 +17,11 @@ Rails.application.routes.draw do
     collection do
       post 'toggle_visible'
       post 'update_order'
+      get 'collection'
     end
   end
+
+  resources :layouts, only: [:index]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

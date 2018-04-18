@@ -8,8 +8,12 @@ class FacesController < ApplicationController
   include Nokogiri
 
   # call the get_face method at the beginning of these actions
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:collection]
   before_action :get_face, only: [:edit, :update, :show, :destroy]
+
+  def collection
+    @faces = Face.where(visible: true).order('_index ASC')
+  end
 
   def index
     @faces = Face.order('name')
@@ -44,9 +48,6 @@ class FacesController < ApplicationController
       # reload the /faces/new page
       render 'new'
     end
-  end
-
-  def show
   end
 
   def destroy
