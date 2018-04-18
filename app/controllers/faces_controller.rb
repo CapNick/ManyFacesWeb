@@ -36,7 +36,7 @@ class FacesController < ApplicationController
   def create
     # render plain: params[:face].inspect
     @face = Face.new(face_params)
-    @face._index = Face.order('_index DESC').first._index + 1
+    @face._index = Face.count == 0 ? 0 : Face.order('_index DESC').first._index + 1
     if @face.save
       flash[:notice] = "Staff member was successfully created."
       redirect_to faces_path
@@ -125,7 +125,7 @@ class FacesController < ApplicationController
   end
 
   def face_params
-    params.require(:face).permit(:name, :_type, :position, :room, :email, :phone, :photo, :photo_file, :visible, :ovr_name, :ovr_type, :ovr_position, :ovr_room, :ovr_email, :ovr_phone, :ovr_photo, :remove_photo_file)
+    params.require(:face).permit(:name, :_type, :position, :room, :email, :phone, :photo, :model_file, :visible, :ovr_name, :ovr_type, :ovr_position, :ovr_room, :ovr_email, :ovr_phone, :ovr_photo, :remove_model_file)
   end
 
   def scrape_page(type)
@@ -172,14 +172,20 @@ class FacesController < ApplicationController
     end
     if temp.to_s.length == 0
       temp = "None" # not all staff members have rooms
+    else
+      if temp.start_with?('Room')
+        temp.slice!(0, 5)
+      end
     end
     temp.to_s
   end
 
   def update_rooms
     Face.all.each do |f|
-      f.room = scrape_room f.url
-      f.save
+      if f.url?
+        f.room = scrape_room f.url
+        f.save
+      end
     end
   end
 end

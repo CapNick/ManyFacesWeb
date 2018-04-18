@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409181103) do
+ActiveRecord::Schema.define(version: 20180418152317) do
 
   create_table "faces", force: :cascade do |t|
     t.string   "name"
@@ -31,10 +31,9 @@ ActiveRecord::Schema.define(version: 20180409181103) do
     t.string   "ovr_phone"
     t.string   "ovr_photo"
     t.boolean  "visible",      default: true
-    t.string   "photo_file"
+    t.string   "model_file"
     t.integer  "_index"
     t.string   "label"
-    t.string   "model"
   end
 
   create_table "layouts", force: :cascade do |t|

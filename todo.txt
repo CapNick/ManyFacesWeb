@@ -6,7 +6,6 @@ To-do:
 - Double-check the design of all pages
 - Add validation/verification checks if necessary
 - Look into testing
-- Look into model downloading
 - Reorder faces help information
 
 
