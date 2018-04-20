@@ -16,25 +16,25 @@ function toggle_visible(id) {
 }
 
 function update_order() {
-    $('#progressbar').css('display', 'block');
+    $('#progressbar').css('display', 'block'); // displays a progress bar
 
     var order = [];
-    $('#ordering li').each(function(e) {
-        if ($(this).hasClass('blank')) {
-            order.push('blank');
+    $('#ordering li').each(function(e) { // for each element in the list
+        if ($(this).hasClass('blank')) { // if the element is a blank div
+            order.push('blank'); // push the 'blank' string into the order array
         } else {
-            var id = $(this).attr('id');
-            var label = $("#label-" + id).val();
-            order.push(id + "-" + label);
+            var id = $(this).attr('id'); // get the id of the staff member
+            var label = $('#label-' + id).val(); // get any text entered into their 'label' field
+            order.push(id + '-' + label); // push their id and label into the order array
         }
     });
 
-    var dimens = $('#dimensions').val().split(' x ');
+    var dimens = $('#dimensions').val().split(' x '); // get the selected width and height
 
-    $.ajax({
+    $.ajax({ // generate an ajax request
         method: "POST",
         url: "/faces/update_order",
-        data: {'order': order, 'width': dimens[0], 'height': dimens[1]}
+        data: {'order': order, 'width': dimens[0], 'height': dimens[1]} // transfer the ordered list of staff and the selected dimensions
     });
 }
 
