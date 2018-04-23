@@ -1,3 +1,7 @@
+<%= button_to new_session_path(resource_name), :class => "btn btn-default", :id => "back", :method => :get do %>
+    <span class="glyphicon glyphicon-chevron-left"></span>&nbsp; Back
+<% end %>
+
 <h2>Forgot your password?</h2>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>

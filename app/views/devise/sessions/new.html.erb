@@ -1,19 +1,23 @@
-<h2>Log in to ManyFaces</h2>
+<div id="login-wrapper">
+  <div id="login-div">
+    <h2 style="margin-bottom: 20px">Log in to ManyFaces</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, :class => "form-control" %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div style="margin-bottom: 10px">
+        <%= f.label :email, style: "width: 100%; text-align: left" %><br />
+        <%= f.email_field :email, autofocus: true, :class => "form-control", style: "width: 100%" %>
+      </div>
+
+      <div style="margin-bottom: 10px">
+        <%= f.label :password, style: "width: 100%; text-align: left" %><br />
+        <%= f.password_field :password, autocomplete: "off", :class => "form-control", style: "width: 100%;" %>
+      </div>
+
+      <div style="margin-bottom: 10px">
+        <%= f.submit "Log in", :class => "btn btn-default", :id => "login" %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off", :class => "form-control" %>
-  </div>
-
-  <div class="field">
-    <%= f.submit "Log in", :class => "btn btn-default", :id => "login" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

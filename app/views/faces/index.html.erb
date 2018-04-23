@@ -9,18 +9,19 @@
         </div>
         <div class="modal-body">
           This page lets you view all of the information held on staff members in the system's database.<br><br>
+          Use the navigation bar below the table to view more staff members, or use the search field to find one in particular.<br><br>
           The system works by extracting information from the school's 'People' webpages. If the information on these webpages is changed, the system will need to extract this information again. Clicking the
           <%= button_tag :class => "btn btn-default" do %><span class="glyphicon glyphicon-refresh"></span>&nbsp; Sync<% end %> button will begin the extraction process, which may take a minute or two.<br><br>
-          Use the navigation bar to change pages and view more staff members.<br><br>
           To <strong>add a new staff member</strong>, click the <%= button_tag :class => "btn btn-success" do %><span class="glyphicon glyphicon-plus"></span>&nbsp; New staff member<% end %>
-          button in the top-left of the screen.<br><br>
-          To <strong>edit a staff member's information</strong>, click on the <%= button_tag :class => "btn btn-warning" do %><span class="glyphicon glyphicon-pencil"></span><% end %>
-          in the 'Actions' column of their row.<br><br>
-          To <strong>delete a staff member</strong> from the system, click on the <%= button_tag :class => "btn btn-danger" do %><span class="glyphicon glyphicon-trash"></span><% end %>
-          button in the 'Actions' column of their row.<br><br>
+          button.<br><br>
+          To <strong>edit a staff member's information</strong>, click the <%= button_tag :class => "btn btn-warning" do %><span class="glyphicon glyphicon-pencil"></span><% end %>
+          button at the end of their row.<br><br>
+          To <strong>delete a staff member</strong> from the system, click the <%= button_tag :class => "btn btn-danger" do %><span class="glyphicon glyphicon-trash"></span><% end %>
+          button at the end of their row.<br><br>
           Staff members whose rows are greyed out will <strong>not</strong> be displayed on the staff board. To toggle this visibility, simply click the <%= button_tag :class => "btn btn-default btn-visible" do %><span class="glyphicon glyphicon-eye-open"></span><% end %>
           button in the 'Actions' column of their row.<br><br>
-          Finally, to modify the order in which the ...
+          Finally, to update the order in which staff members appear on the staff board, and to to show more/less, click the <%= button_tag :class => "btn btn-info" do %>
+          <span class="glyphicon glyphicon-sort"></span><span class="glyphicon glyphicon-user"></span>&nbsp; Reorder Faces<% end %> button.
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -115,7 +116,11 @@
           </td>
           <td>
             <% if face.ovr_photo.to_s.empty? %>
-                <a href=<%= face.photo %>><%= face.photo %></a>
+                <% if face.photo == "None" %>
+                    None
+                <% else %>
+                    <a href=<%= face.photo %>><%= face.photo %></a>
+                <% end %>
             <% else %>
                 <a href=<%= face.ovr_photo %>><%= face.ovr_photo %></a>
             <% end %>

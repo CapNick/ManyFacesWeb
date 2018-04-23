@@ -2,6 +2,32 @@
 
 <div id="progressbar"></div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="padding: 0px" class="modal-title" id="exampleModalLabel">Help information</h3>
+      </div>
+      <div class="modal-body">
+        This page lets you update the layout of the ManyFaces staff board.<br><br>
+        The grid of light grey frames represents the current layout of staff members. To update the number of staff members that are displayed, select new width/height dimensions using the drop-down
+        menu in the top-right of the screen. Staff members at the bottom of the list that will be cut off by these dimensions (and will <b>not</b> be visible) can be identified by their dark grey frame colour.<br><br>
+        To change the order that the staff members appear in, simply click and drag the frames of individual staff members, and drop them into the desired positions.<br><br>
+        The text field in each frame can be used to enter text that will appear above the staff member's 3D model on the staff board. For example, entering 'Professors' above a staff member
+        might help to indicate that this staff member, and those that follow, are professors within the school.<br><br>
+        You can also add an empty frame to the grid in order to distinguish different groups of staff members. Clicking the <%= button_tag :class => "btn btn-default" do %>
+        <span class="glyphicon glyphicon-plus"></span>&nbsp; Add blank space<% end %> button will add a blank frame to the start of the list. These frames can be repositioned like any other, and can be
+        removed by clicking the <button>Delete</button> button inside them.<br><br>
+        To save the new layout, simply click the <%= button_tag :class => "btn btn-success" do %><span class="glyphicon glyphicon-floppy-disk"></span>&nbsp; Save this order<% end %> button. The staff board
+        applies any new changes approximately every 10 minutes.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="help">
   <div style="display: inline-block">
     <label for="dimensions">Dimensions:</label>
@@ -41,7 +67,7 @@
     <% if face.visible %>
       <% while face._index != index %>
         <li style="border: 1px dashed #c5c5c5" class="blank">
-          <button style="width: 50%; position: absolute; top: 35px; left: 25px" onclick="delete_blank(this)">Delete</button>
+          <button class="btn-delete-blank" onclick="delete_blank(this)">Delete</button>
         </li>
         <% index += 1 %>
       <% end %>
@@ -59,8 +85,8 @@
 </ul>
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function() { // when the page loads
         var layout = "<%= @selected.width %> x <%= @selected.height %>";
-        update_dimens(layout);
+        update_dimens(layout); // apply the currently selected dimensions to the staff grid
     });
 </script>
