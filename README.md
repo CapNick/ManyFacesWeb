@@ -4,11 +4,11 @@ This web application can be used to update the content and layout of the ManyFac
 
 ### Setup
 
-**Install Rails**
+**1. Install Rails**
 
 To start the web server, Rails must be installed. All of the necessary steps for installing Rails are listed in section 3.1 of [this page](http://guides.rubyonrails.org/getting_started.html).
 
-**Install libraries**
+**2. Install libraries**
 
 Once Rails has been installed, navigate into the application's file directory using a terminal, e.g.
 
@@ -18,7 +18,7 @@ Then run the following command to install all of the libraries that the applicat
 
     $ bundle install
     
-**Create the database**
+**3. Create the database**
 
 To create the database, run the following commands from inside the application's file directory:
 
@@ -27,7 +27,7 @@ To create the database, run the following commands from inside the application's
     
 Note that this only has to be done **once**, before the web server is launched for the first time.
     
-**Launch the web server**
+**4. Launch the web server**
 
 To launch the web server, run the following command from inside the application's file directory:
 
@@ -39,7 +39,7 @@ To shut down the web server, press CTRL+C inside the same terminal window.
     
 ### FAQ
     
-**How do I add a user account?**    
+**- How do I add a user account?**    
 
 All database updates that cannot be performed using the web application will require use of the Rails console.
 
@@ -55,7 +55,7 @@ Note that passwords must be at least 6 characters long.
 
 To close the Rails console, run the ``quit`` command.
 
-**How do I change my password?**
+**- How do I change my password?**
 
 To change your password, first open the Rails console (see previous question), then run the following commands:
 
@@ -65,7 +65,7 @@ To change your password, first open the Rails console (see previous question), t
     
 These commands will create a reference to your user record, update the password, and apply the change.
 
-**How do I add more grid dimensions to the 'Reorder Faces' screen?**
+**- How do I add more grid dimensions to the 'Reorder Faces' screen?**
 
 To add a new set of dimensions, first open the Rails console (see first question), then run the following commands:
 
