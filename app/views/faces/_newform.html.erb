@@ -1,31 +1,31 @@
 <%= form_for @face do |f| %>
     <p>
       <%= f.label :name %><br/>
-      <%= f.text_field :name, :class => "form-control", :data => {:toggle => "tooltip"}, :placeholder => "e.g. John Smith", :title => "The staff member's full name. You can add a nickname later." %>
+      <%= f.text_field :name, autocomplete: "off", :class => "form-control", :data => {:toggle => "tooltip"}, :placeholder => "e.g. John Smith", :title => "The staff member's full name. You can add a nickname later." %>
     </p>
     <p>
       <%= f.label :type %><br/>
-      <%= f.text_field :_type, :class => "form-control", :data => {:toggle => "tooltip"}, :placeholder => "e.g. Academic/Administrative/Technical", :title => "Are they an academic, administrative or technical member of staff?" %>
+      <%= f.text_field :_type, autocomplete: "off", :class => "form-control", :data => {:toggle => "tooltip"}, :placeholder => "e.g. Academic/Administrative/Technical", :title => "Are they an academic, administrative or technical member of staff?" %>
     </p>
     <p>
       <%= f.label :position %><br/>
-      <%= f.text_field :position, :class => "form-control", :data => {:toggle => "tooltip"}, :placeholder => "e.g. Professor", :title => "The staff member's role/position in the school." %>
+      <%= f.text_field :position, autocomplete: "off", :class => "form-control", :data => {:toggle => "tooltip"}, :placeholder => "e.g. Professor", :title => "The staff member's role/position in the school." %>
     </p>
     <p>
       <%= f.label :room %><br/>
-      <%= f.text_field :room, :class => "form-control", :data => {:toggle => "tooltip"}, :placeholder => "e.g. A1 Computer Science", :title => "The staff member's room/address in the school." %>
+      <%= f.text_field :room, autocomplete: "off", :class => "form-control", :data => {:toggle => "tooltip"}, :placeholder => "e.g. A1 Computer Science", :title => "The staff member's room/address in the school." %>
     </p>
     <p>
       <%= f.label :email %><br/>
-      <%= f.text_field :email, :class => "form-control", :data => {:toggle => "tooltip"}, :placeholder => "e.g. john.smith@nottingham.ac.uk", :title => "The staff member's university email address." %>
+      <%= f.text_field :email, autocomplete: "off", :class => "form-control", :data => {:toggle => "tooltip"}, :placeholder => "e.g. john.smith@nottingham.ac.uk", :title => "The staff member's university email address." %>
     </p>
     <p>
       <%= f.label :phone %><br/>
-      <%= f.text_field :phone, :class => "form-control", :data => {:toggle => "tooltip"}, :placeholder => "e.g. 01234567891", :title => "A telephone number for contacting the staff member." %>
+      <%= f.text_field :phone, autocomplete: "off", :class => "form-control", :data => {:toggle => "tooltip"}, :placeholder => "e.g. 01234567891", :title => "A telephone number for contacting the staff member." %>
     </p>
     <p>
       <%= f.label 'Link to photo' %><br/>
-      <%= f.text_field :photo, :class => "form-control", :data => {:toggle => "tooltip"}, :placeholder => "e.g. notts.ac.uk/staff/photos/john_smith", :title => "The URL of the staff member's photo. This will be used to generate their 3D model." %>
+      <%= f.text_field :photo, autocomplete: "off", :class => "form-control", :data => {:toggle => "tooltip"}, :placeholder => "e.g. notts.ac.uk/staff/photos/john_smith", :title => "The URL of the staff member's photo. This will be used to generate their 3D model." %>
     </p>
     <p>
       <%= f.label 'Upload model file' %><br/>

@@ -5,7 +5,7 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div style="margin-bottom: 10px">
         <%= f.label :email, style: "width: 100%; text-align: left" %><br />
-        <%= f.email_field :email, autofocus: true, :class => "form-control", style: "width: 100%" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "off", :class => "form-control", style: "width: 100%" %>
       </div>
 
       <div style="margin-bottom: 10px">

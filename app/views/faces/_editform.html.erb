@@ -6,7 +6,7 @@
       </div>
       <div>
         <%= f.label(:aapl, "Name (Override)") %><br/>
-        <%= f.text_field :ovr_name, :class => "form-control", :data => {:toggle => "tooltip"}, :title => "The staff member's full name/nickname." %>
+        <%= f.text_field :ovr_name, autocomplete: "off", :class => "form-control", :data => {:toggle => "tooltip"}, :title => "The staff member's full name/nickname." %>
       </div>
     </p>
     <p>
@@ -16,7 +16,7 @@
     </div>
     <div>
       <%= f.label(:aapl, "Type (Override)") %><br/>
-      <%= f.text_field :ovr_type, :class => "form-control", :data => {:toggle => "tooltip"}, :title => "Are they an academic, administrative or technical member of staff?" %>
+      <%= f.text_field :ovr_type, autocomplete: "off", :class => "form-control", :data => {:toggle => "tooltip"}, :title => "Are they an academic, administrative or technical member of staff?" %>
     </div>
     </p>
     <p>
@@ -26,7 +26,7 @@
     </div>
     <div>
       <%= f.label(:aapl, "Position (Override)") %><br/>
-      <%= f.text_field :ovr_position, :class => "form-control", :data => {:toggle => "tooltip"}, :title => "The staff member's role/position in the school." %>
+      <%= f.text_field :ovr_position, autocomplete: "off", :class => "form-control", :data => {:toggle => "tooltip"}, :title => "The staff member's role/position in the school." %>
     </div>
     </p>
     <p>
@@ -36,7 +36,7 @@
     </div>
     <div>
       <%= f.label(:aapl, "Room (Override)") %><br/>
-      <%= f.text_field :ovr_room, :class => "form-control", :data => {:toggle => "tooltip"}, :title => "The staff member's room/address in the school." %>
+      <%= f.text_field :ovr_room, autocomplete: "off", :class => "form-control", :data => {:toggle => "tooltip"}, :title => "The staff member's room/address in the school." %>
     </div>
     </p>
     <p>
@@ -46,7 +46,7 @@
     </div>
     <div>
       <%= f.label(:aapl, "Email (Override)") %><br/>
-      <%= f.text_field :ovr_email, :class => "form-control", :data => {:toggle => "tooltip"}, :title => "The staff member's email address." %>
+      <%= f.text_field :ovr_email, autocomplete: "off", :class => "form-control", :data => {:toggle => "tooltip"}, :title => "The staff member's email address." %>
     </div>
     </p>
     <p>
@@ -56,7 +56,7 @@
     </div>
     <div>
       <%= f.label(:aapl, "Phone (Override)") %><br/>
-      <%= f.text_field :ovr_phone, :class => "form-control", :data => {:toggle => "tooltip"}, :title => "A telephone number for contacting the staff member." %>
+      <%= f.text_field :ovr_phone, autocomplete: "off", :class => "form-control", :data => {:toggle => "tooltip"}, :title => "A telephone number for contacting the staff member." %>
     </div>
     </p>
     <p>
@@ -66,7 +66,7 @@
     </div>
     <div>
       <%= f.label(:aapl, "Link to photo (Override)") %><br/>
-      <%= f.text_field :ovr_photo, :class => "form-control", :data => {:toggle => "tooltip"}, :title => "The URL of the staff member's photo." %>
+      <%= f.text_field :ovr_photo, autocomplete: "off", :class => "form-control", :data => {:toggle => "tooltip"}, :title => "The URL of the staff member's photo." %>
     </div>
     </p>
     <p>

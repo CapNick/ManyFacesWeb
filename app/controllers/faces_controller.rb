@@ -75,7 +75,7 @@ class FacesController < ApplicationController
 
   # sync the Faces table with the UoN CS staff information website
   def scrape
-    $order = 0 # set the initial grid position
+    $order = Face.count == 0 ? 0 : Face.order('_index DESC').first._index + 1 # set the initial grid position
     scrape_page "Academic" # scrape the CS academic staff web page
     scrape_page "Administrative" # scrape the CS admin staff web page
     scrape_page "Technical" # scrape the CS technical staff web page
