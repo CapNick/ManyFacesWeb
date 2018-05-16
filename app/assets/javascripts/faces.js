@@ -84,7 +84,7 @@ function update_cutoff() {
     }
 }
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
     $('#btn-sync').click(function() { // when the 'sync' button is clicked
         var icon = $(this).find(".glyphicon.glyphicon-refresh");
         animateClass = "glyphicon-refresh-animate";

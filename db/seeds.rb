@@ -7,4 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create!(email: 'root@root.com', password: 'password')
-Layout.create!(width: 6, height: 10, selected: true)
+Layout.create!(width: 5, height: 3, selected: false)
+Layout.create!(width: 10, height: 5, selected: true)
+Layout.create!(width: 14, height: 6, selected: false)
